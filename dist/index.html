@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jagadeeswaran | Product Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+              mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', "Liberation Mono", "Courier New", 'monospace'],
+            },
+            colors: {
+              blueprint: {
+                bg: '#FFFDF5', // Warm Cream / Paper
+                panel: '#FFFFFF',
+                border: '#E5E5E5', // Light gray for subtle borders
+                grid: '#EFECE2', // Slightly darker cream for grid
+                primary: '#000000', // Pure Black
+                accent: '#333333', // Dark Gray
+                text: '#1A1A1A', // Soft Black
+                muted: '#666666', // Medium Gray
+              }
+            },
+            animation: {
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'draw': 'draw 2s ease-in-out forwards',
+              'marquee': 'marquee 60s linear infinite',
+              'marquee-reverse': 'marqueeReverse 60s linear infinite',
+            },
+            keyframes: {
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
+              },
+              marqueeReverse: {
+                '0%': { transform: 'translateX(-50%)' },
+                '100%': { transform: 'translateX(0%)' },
+              },
+              draw: {
+                '0%': { strokeDasharray: '1000', strokeDashoffset: '1000' },
+                '100%': { strokeDashoffset: '0' },
+              }
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #EFECE2 1px, transparent 1px), linear-gradient(to bottom, #EFECE2 1px, transparent 1px)",
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      html { scroll-behavior: smooth; }
+      body { background-color: #FFFDF5; color: #1A1A1A; }
+      ::selection { background: #000000; color: #FFFFFF; }
+      
+      .paused {
+        animation-play-state: paused !important;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "framer-motion": "https://aistudiocdn.com/framer-motion@^11.0.0"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-D3K6cu_T.js"></script>
+</head>
+  <body class="antialiased">
+    <div id="root"></div>
+</body>
+</html>
