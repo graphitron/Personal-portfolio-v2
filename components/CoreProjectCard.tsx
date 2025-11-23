@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import { CoreProject } from '../types';
 import Badge from './Badge';
 import { ArrowRight, ExternalLink, TrendingUp } from 'lucide-react';
@@ -20,10 +20,42 @@ const itemVariants = {
 };
 
 const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => {
+  const [isAutoScroll, setIsAutoScroll] = useState(true);
+  
+  // Drag scrolling state
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
   // Ensure we have images to scroll. If gallery is empty, use the main image.
   const images = project.gallery && project.gallery.length > 0 ? project.gallery : [project.image];
   // Duplicate images enough times to ensure smooth infinite scrolling
   const scrollItems = [...images, ...images, ...images, ...images];
+
+  // Mouse Drag Handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (isAutoScroll || !scrollRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - scrollRef.current.offsetLeft);
+    setScrollLeft(scrollRef.current.scrollLeft);
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || isAutoScroll || !scrollRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Scroll speed multiplier
+    scrollRef.current.scrollLeft = scrollLeft - walk;
+  };
 
   return (
     <motion.div 
@@ -52,10 +84,10 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 {project.tagline}
               </p>
             </div>
-
-            <p className="text-blueprint-text/80 leading-relaxed mb-2">
+{/* 
+            <p className="text-blueprint-text/80 leading-relaxed mb-8">
               {project.description}
-            </p>
+            </p> */}
 
             {/* Impact Metrics Section */}
             {project.metrics && (
@@ -98,30 +130,46 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
           <div className="md:col-span-7 order-1 md:order-2">
              <div className="w-full aspect-[16/10] border border-blueprint-border p-2 bg-white relative overflow-hidden">
                 
-                {/* 1. Static Background Layer */}
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 bg-blueprint-grid opacity-40 z-10 mix-blend-multiply pointer-events-none" />
-                    <img 
-                      src={project.image} 
-                      alt="Background Context" 
-                      className="w-full h-full object-cover opacity-100 brightness-60"
-                    />
-                    {/* Vignette */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-white/20 z-10" /> */}
+                {/* Static Background Layer */}
+                  <div className="absolute inset-0 z-0">
+  
+                {/* Background image */}
+                  <img 
+                    src={project.image}
+                    alt="Background Context" 
+                    className="w-full h-full object-cover opacity-1"   // <-- Increase visibility
+                  />
+
+                  {/* Optional subtle grid */}
+                  <div className="absolute inset-0 bg-blueprint-grid opacity-20 mix-blend-multiply pointer-events-none" />
+
+                  {/* Soft vignette */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-white/10" />
                 </div>
 
+
                 {/* 2. Scrolling Gallery Overlay */}
-                <div className="absolute inset-0 z-20 flex items-center overflow-hidden">
-                   <div className="flex gap-6 animate-marquee hover:[animation-play-state:paused] px-6">
+                <div 
+                   ref={scrollRef}
+                   onMouseDown={handleMouseDown}
+                   onMouseLeave={handleMouseLeave}
+                   onMouseUp={handleMouseUp}
+                   onMouseMove={handleMouseMove}
+                   className={`absolute inset-0 z-20 flex items-center ${isAutoScroll ? 'overflow-hidden' : 'overflow-x-auto cursor-grab active:cursor-grabbing no-scrollbar'}`}
+                >
+                   <div 
+                      className={`flex gap-6 px-6 ${isAutoScroll ? 'animate-marquee hover:[animation-play-state:paused]' : ''}`}
+                   >
                       {scrollItems.map((img, i) => (
                         <div 
                           key={`${project.id}-scroll-${i}`} 
-                          className="relative w-[280px] md:w-[520px] aspect-video flex-shrink-0 bg-white border-0 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
+                          className="relative w-[350px] md:w-[500px] aspect-video flex-shrink-0 border-4 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
                         >
                            <img 
                              src={img} 
                              alt={`${project.title} Screen ${i}`} 
-                             className="object-cover group-hover/item:grayscale-0 transition-all"
+                             draggable={false}
+                             className="w-full h-full object-cover grayscale-[20%] group-hover/item:grayscale-0 transition-all select-none"
                            />
                            {/* Shine effect */}
                            <div className="absolute inset-0 bg-gradient-to-tr from-white/20 via-transparent to-transparent opacity-0 group-hover/item:opacity-100 transition-opacity pointer-events-none" />
@@ -131,19 +179,29 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 </div>
 
                 {/* Decorative UI Overlay */}
-                <div className="absolute bottom-3 left-3 z-30 flex items-center gap-2">
-                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                <div className="absolute bottom-3 left-3 z-30 flex items-center gap-2 pointer-events-none">
+                   <div className={`w-1.5 h-1.5 rounded-full ${isAutoScroll ? 'bg-green-500 animate-pulse' : 'bg-blueprint-muted'}`}></div>
                    <span className="text-[9px] font-mono text-blueprint-primary tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-blueprint-border">
-                     Live Gallery Feed
+                     {isAutoScroll ? 'Live Gallery Feed' : 'Manual Control'}
                    </span>
                 </div>
              </div>
              
-             <div className="flex justify-between text-[10px] font-mono text-blueprint-muted mt-2">
+             <div className="flex justify-between items-center text-[10px] font-mono text-blueprint-muted mt-2">
                 <span className="flex items-center gap-2">
                    Fig. {index + 1}.0 // System Interface
                 </span>
-                <span>Auto-Scroll Active</span>
+                
+                {/* Toggle Switch */}
+                <button 
+                  onClick={() => setIsAutoScroll(!isAutoScroll)}
+                  className="flex items-center gap-2 cursor-pointer hover:text-blueprint-primary transition-colors focus:outline-none"
+                >
+                  <span className={isAutoScroll ? "" : "opacity-50"}>Auto-Scroll</span>
+                  <div className={`w-6 h-3 rounded-full border transition-colors relative ${isAutoScroll ? 'bg-blueprint-primary border-blueprint-primary' : 'bg-transparent border-blueprint-border'}`}>
+                      <div className={`absolute top-[1px] w-2 h-2 rounded-full bg-white shadow-sm transition-all duration-300 ${isAutoScroll ? 'left-[13px]' : 'left-[1px] bg-blueprint-muted'}`}></div>
+                  </div>
+                </button>
              </div>
           </div>
 
