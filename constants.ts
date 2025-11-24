@@ -137,18 +137,18 @@ export const TOOLS_LIST = [
 
 // MANUAL LINKEDIN POSTS - REPLACE URLS HERE
 export const LINKEDIN_POSTS = [
-  { id: 1, image: 'public/assets/AI Human love.png', caption: 'AI Human Love' },
-  { id: 2, image: 'public/assets/6 Things That Confuse Users More Than You Think.png', caption: '6 Things That Confuse Users More Than You Think' },
-  { id: 3, image: 'public/assets/20 Habits That Show  Youre Leveling Up as a Designer.png', caption: '20 Habits That Show  Youre Leveling Up as a Designer' },
-  { id: 4, image: 'public/assets/Design Principles That Dont Always Work.png', caption: 'Design Principles That Don’t Always Work' },
-  { id: 5, image: 'public/assets/Escape hatches.png', caption: 'Escape Hatches' },
-  { id: 6, image: 'public/assets/experience universe.png', caption: 'Experience Universe' },
-  { id: 7, image: 'public/assets/How to Design a Life That Feels Like Yours.png', caption: 'How to Design a Life That Feels Like Yours' },
-  { id: 8, image: 'public/assets/open ai first rebrand.png', caption: 'Open AI First Rebrand' },
-  { id: 9, image: 'public/assets/shapes speak are you listening.png', caption: 'Shapes Speak are you Listening' },
-  { id: 10, image: 'public/assets/There No Final Version in UX.png', caption: 'There No Final Version  in UX' },
-  { id: 11, image: 'public/assets/Time  is part of UX.png', caption: 'Time  is part of UX' },
-  { id: 12, image: 'public/assets/What If All  AI Tools Vanished Tomorrow.png', caption: 'What If All  AI Tools Vanished Tomorrow' },
+  { id: 1, image: 'assets/AI Human love.png', caption: 'AI Human Love' },
+  { id: 2, image: 'assets/6 Things That Confuse Users More Than You Think.png', caption: '6 Things That Confuse Users More Than You Think' },
+  { id: 3, image: 'assets/20 Habits That Show  Youre Leveling Up as a Designer.png', caption: '20 Habits That Show  Youre Leveling Up as a Designer' },
+  { id: 4, image: 'assets/Design Principles That Dont Always Work.png', caption: 'Design Principles That Don’t Always Work' },
+  { id: 5, image: 'assets/Escape hatches.png', caption: 'Escape Hatches' },
+  { id: 6, image: 'assets/experience universe.png', caption: 'Experience Universe' },
+  { id: 7, image: 'assets/How to Design a Life That Feels Like Yours.png', caption: 'How to Design a Life That Feels Like Yours' },
+  { id: 8, image: 'assets/open ai first rebrand.png', caption: 'Open AI First Rebrand' },
+  { id: 9, image: 'assets/shapes speak are you listening.png', caption: 'Shapes Speak are you Listening' },
+  { id: 10, image: 'assets/There No Final Version in UX.png', caption: 'There No Final Version  in UX' },
+  { id: 11, image: 'assets/Time  is part of UX.png', caption: 'Time  is part of UX' },
+  { id: 12, image: 'assets/What If All  AI Tools Vanished Tomorrow.png', caption: 'What If All  AI Tools Vanished Tomorrow' },
 ];
 
 export const EXPERIENCE_ITEMS = [
