@@ -96,7 +96,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                   <div key={i} className="border border-blueprint-border bg-white p-3 relative overflow-hidden group/metric hover:border-blueprint-primary/30 transition-colors">
                     <div className="absolute top-0 right-0 w-3 h-3 bg-blueprint-bg border-l border-b border-blueprint-border"></div>
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xl font-display font-bold text-blueprint-primary">{metric.value}</span>
+                      <span className="text-2xl font-display font-bold text-blueprint-primary">{metric.value}</span>
                       {metric.trend === 'up' && <TrendingUp className="w-3 h-3 text-green-500" />}
                     </div>
                     <p className="text-[10px] font-mono text-blueprint-muted leading-tight">{metric.label}</p>
@@ -144,7 +144,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                   <div className="absolute inset-0 bg-blueprint-grid opacity-20 mix-blend-multiply pointer-events-none" />
 
                   {/* Soft vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-white/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/10" />
                 </div>
 
 
@@ -163,7 +163,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                       {scrollItems.map((img, i) => (
                         <div 
                           key={`${project.id}-scroll-${i}`} 
-                          className="relative w-[350px] md:w-[500px] aspect-video flex-shrink-0 border-4 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
+                          className="relative w-[350px] md:w-[500px] aspect-video flex-shrink-0 border-0 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
                         >
                            <img 
                              src={img} 
@@ -179,18 +179,19 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 </div>
 
                 {/* Decorative UI Overlay */}
-                <div className="absolute bottom-3 left-3 z-30 flex items-center gap-2 pointer-events-none">
+
+                {/* <div className="absolute bottom-3 left-3 z-30 flex items-center gap-2 pointer-events-none">
                    <div className={`w-1.5 h-1.5 rounded-full ${isAutoScroll ? 'bg-green-500 animate-pulse' : 'bg-blueprint-muted'}`}></div>
                    <span className="text-[9px] font-mono text-blueprint-primary tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-blueprint-border">
                      {isAutoScroll ? 'Live Gallery Feed' : 'Manual Control'}
                    </span>
-                </div>
+                </div> */}
              </div>
              
-             <div className="flex justify-between items-center text-[10px] font-mono text-blueprint-muted mt-2">
-                <span className="flex items-center gap-2">
+             <div className="flex justify-end items-center text-[10px] font-mono text-blueprint-muted mt-2">
+                {/* <span className="flex items-center gap-2">
                    Fig. {index + 1}.0 // System Interface
-                </span>
+                </span> */}
                 
                 {/* Toggle Switch */}
                 <button 

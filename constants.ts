@@ -8,7 +8,7 @@ export const CORE_PROJECTS: CoreProject[] = [
     tagline: 'Multilingual AI Content Platform',
     //description: 'Ailaysa is an AI-powered multilingual content platform used by individuals and enterprises to generate writing, translation, voice, and visuals in one seamless workflow.',
     roles: ['Product Design', 'UX/UI', 'Workflow Design', 'Interaction Design', 'Design System', 'AI Feature Collaboration'],
-    badges: ['AI', 'SaaS', 'B2B', 'B2C', 'Enterprise UX'],
+    badges: ['AI | ', 'SaaS | ', 'B2B | ', 'Enterprise UX'],
     metrics: [
       { value: '4×', label: 'Increase in daily active users', trend: 'up' },
       { value: '10+', label: 'AI modules designed across the platform', trend: 'up' }
@@ -28,9 +28,9 @@ export const CORE_PROJECTS: CoreProject[] = [
     tagline: 'AI-Interactive Reading Platform',
     //description: 'Chaireader turns reading into a conversational experience, allowing users to explore stories interactively through AI-driven dialogue and dynamic storytelling.',
     roles: ['Product Design', 'UX/UI', 'Conversational Flows', 'Prototype Design', 'Visual System', 'Human-AI Interaction'],
-    badges: ['AI', 'B2C', 'Conversational UX', 'Interaction Design'],
+    badges: ['AI | ', 'B2C | ', 'Conversational UX | ', 'Interaction Design'],
     metrics: [
-      { value: '0 → Launch', label: 'Product Launch (From Scratch)', trend: 'up' },
+      { value: '0 → Launch', label: 'End-to-End Product Creation & Launch', trend: 'up' },
       { value: '5+', label: 'Whitelabel Enterprise Clients', trend: 'up' }
     ],
     image: 'assets/cosmic-bg.png', 
