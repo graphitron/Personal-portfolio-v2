@@ -19,8 +19,10 @@ export const CORE_PROJECTS: CoreProject[] = [
        'assets/ai_projects_main_3c8c4a17d2.svg', // Analytics
        'assets/ailaysa-bg-1.png'  // Code/System
     ],
-    ctaText: 'Visit Product',
+    ctaText: 'Visit Product Live',
+    caseStudyUrl: 'https://ailaysa.com', // REPLACE WITH YOUR LINK
     //secondaryCta: 'Visit Product'
+    productUrl: 'https://ailaysa.com' // REPLACE WITH YOUR LINK
   },
   {
     id: 'chaireader',
@@ -34,12 +36,15 @@ export const CORE_PROJECTS: CoreProject[] = [
       { value: '5+', label: 'Whitelabel Enterprise Clients', trend: 'up' }
     ],
     image: 'assets/cosmic-bg.png', 
-    ctaText: 'View Case Study',
     gallery: [
        'assets/chaireader-bg-1.png', // Dashboard
        'assets/chaireader-bg-2.png', // Analytics
        'assets/chaireader-bg-3.png'  // Code/System
     ],
+    ctaText: 'Visit Product Live',
+    caseStudyUrl: 'https://chaireader.com', // REPLACE WITH YOUR LINK
+    //secondaryCta: 'Visit Product'
+    productUrl: 'https://ailaysa.com' // REPLACE WITH YOUR LINK
     //secondaryCta: 'Visit Product'
   }
 ];
@@ -138,7 +143,7 @@ export const TOOLS_LIST = [
 // MANUAL LINKEDIN POSTS - REPLACE URLS HERE
 export const LINKEDIN_POSTS = [
   { id: 1, image: 'assets/AI Human love.png', caption: 'AI Human Love' },
-  { id: 2, image: 'assets/6 Things That Confuse Users More Than You Think.png', caption: '6 Things That Confuse Users More Than You Think' },
+  { id: 2, image: 'assests/20 Habits That Show  Youre Leveling Up as a Designer.avif', caption: '6 Things That Confuse Users More Than You Think' },
   { id: 3, image: 'assets/20 Habits That Show  Youre Leveling Up as a Designer.png', caption: '20 Habits That Show  Youre Leveling Up as a Designer' },
   { id: 4, image: 'assets/Design Principles That Dont Always Work.png', caption: 'Design Principles That Don’t Always Work' },
   { id: 5, image: 'assets/Escape hatches.png', caption: 'Escape Hatches' },

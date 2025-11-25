@@ -21,7 +21,8 @@ const LinkedInFeature: React.FC = () => {
           My LinkedIn isn't just a resume—it's a live documentation of my process. I share micro-case studies, build-in-public updates, and thoughts on AI UX.
         </p>
         <motion.a 
-          href="#"
+          href="https://www.linkedin.com/in/jagadeeswaran-a-r-91b9b326b/"
+          target="_blank"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           className="inline-flex items-center gap-2 text-sm font-medium bg-blueprint-primary text-white px-6 py-3 hover:bg-blueprint-accent transition-colors"

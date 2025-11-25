@@ -105,26 +105,29 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
               </div>
             )}
 
-            <div className="flex flex-wrap gap-2 mb-8">
-              {project.roles.slice(0,4).map((role) => (
-                <Badge key={role} variant="outline">{role}</Badge>
-              ))}
-            </div>
-
-            <div className="mt-auto flex gap-4 pt-4 md:pt-0">
-               <motion.button 
+<div className="mt-auto flex gap-4 pt-4 md:pt-0">
+               <motion.a 
+                 href={project.caseStudyUrl || '#'}
+                 target="_blank"
+                 rel="noopener noreferrer"
                  whileHover={{ x: 5 }}
-                 className="flex items-center text-sm font-medium bg-blueprint-text text-white px-5 py-2 hover:bg-blueprint-primary transition-colors"
+                 className="flex items-center text-sm font-medium bg-blueprint-text text-white px-5 py-2 hover:bg-blueprint-primary transition-colors cursor-pointer"
                >
                  {project.ctaText} <ArrowRight className="w-4 h-4 ml-2" />
-               </motion.button>
+               </motion.a>
                {project.secondaryCta && (
-                 <button className="flex items-center text-sm font-medium text-blueprint-text border border-blueprint-border px-5 py-2 hover:border-blueprint-text transition-colors">
+                 <a 
+                   href={project.productUrl || '#'}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="flex items-center text-sm font-medium text-blueprint-text border border-blueprint-border px-5 py-2 hover:border-blueprint-text transition-colors cursor-pointer"
+                 >
                    {project.secondaryCta} <ExternalLink className="w-3 h-3 ml-2" />
-                 </button>
+                 </a>
                )}
             </div>
           </div>
+
 
           {/* Image Column (Static Background + Auto-Scrolling Overlay) */}
           <div className="md:col-span-7 order-1 md:order-2">

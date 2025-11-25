@@ -115,9 +115,14 @@ const App: React.FC = () => {
                    <a href="#work" className="bg-blueprint-primary text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-blueprint-text transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]">
                      View Case Studies
                    </a>
-                   <button className="bg-white border border-blueprint-border text-blueprint-text px-6 py-3 text-sm font-medium uppercase tracking-wider hover:border-blueprint-primary transition-colors flex items-center gap-2 shadow-sm">
+                   <a 
+                     href="public\assets\Jagadeeswaran-FlowCV-Resume-20251125.pdf" // REPLACE WITH YOUR RESUME LINK
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-white border border-blueprint-border text-blueprint-text px-6 py-3 text-sm font-medium uppercase tracking-wider hover:border-blueprint-primary transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
+                   >
                      Download Resume <Download className="w-4 h-4" />
-                   </button>
+                   </a>
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="mt-24 flex gap-8">
@@ -239,20 +244,24 @@ const App: React.FC = () => {
                      <div className="flex flex-wrap gap-4">
                         <motion.a 
                           whileHover={{ y: -2 }}
-                          href="mailto:hello@example.com" 
+                          href="jagadeesh.connects@gmail.com" 
                           className="flex items-center gap-2 bg-blueprint-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-black/80 transition-colors shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)]"
                         >
                            <Mail className="w-4 h-4" /> Email Me
                         </motion.a>
                         <motion.a 
                           whileHover={{ y: -2 }}
-                          href="#" 
+                          href="https://www.linkedin.com/in/jagadeeswaran-a-r-91b9b326b" // REPLACE WITH YOUR LINKEDIN
+                          target="_blank"
+                          rel="noopener noreferrer"
                           className="flex items-center gap-2 border-2 border-blueprint-border bg-white text-blueprint-text px-8 py-4 font-bold uppercase tracking-wider hover:border-blueprint-primary transition-colors"
                         >
                            <Linkedin className="w-4 h-4" /> LinkedIn
                         </motion.a>
                      </div>
                   </motion.div>
+
+
 
                   {/* Game Console */}
                   <motion.div

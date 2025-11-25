@@ -14,7 +14,9 @@ export interface CoreProject {
   metrics?: ProjectMetric[]; // New field for success metrics
   image: string;
   gallery?: string[]; // New field for multiple scrolling images
+  caseStudyUrl?: string; // Link for primary CTA
   ctaText: string;
+  productUrl?: string; // Link for secondary CTA
   //secondaryCta?: string;
 }
 
