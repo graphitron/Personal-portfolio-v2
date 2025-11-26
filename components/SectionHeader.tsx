@@ -28,11 +28,11 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle, number, 
       
       <div className="flex flex-col md:flex-row md:items-baseline justify-between gap-4">
         <div className="flex items-baseline gap-3">
-          {number && (
+          {/* {number && (
             <span className="font-mono text-sm text-blueprint-primary font-bold">
               {number}
             </span>
-          )}
+          )} */}
           <h2 className="text-2xl md:text-3xl font-display font-bold text-blueprint-text tracking-tight">
             {title}
           </h2>

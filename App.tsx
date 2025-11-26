@@ -158,7 +158,7 @@ const App: React.FC = () => {
 
             {/* 3. About Section (Moved Next to Work) */}
             <section id="about" className="py-32 border-t border-blueprint-border bg-white relative">
-               <div className="absolute top-8 left-6 text-xs font-mono text-blueprint-primary font-bold">03. ABOUT</div>
+               {/* <div className="absolute top-8 left-6 text-xs font-mono text-blueprint-primary font-bold">02. ABOUT</div> */}
                
                <div className="max-w-4xl mx-auto">
                  <motion.div 
@@ -208,7 +208,7 @@ const App: React.FC = () => {
 
             {/* 5. Visual Marquee Section */}
             <section id="visuals" className="py-24 border-t border-blueprint-border overflow-hidden bg-blueprint-bg">
-              <SectionHeader title="Visual Modules" number="05" subtitle="Fragments of UI, Brand, and Print" />
+              <SectionHeader title="Visual Modules" number="04" subtitle="Fragments of UI, Brand, and Print" />
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
                 whileInView={{ opacity: 1, x: 0 }}
