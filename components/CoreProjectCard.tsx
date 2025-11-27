@@ -84,8 +84,8 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 {project.tagline}
               </p>
             </div>
-{/* 
-            <p className="text-blueprint-text/80 leading-relaxed mb-8">
+
+            {/* <p className="text-blueprint-text/80 leading-relaxed mb-2">
               {project.description}
             </p> */}
 
@@ -105,7 +105,14 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
               </div>
             )}
 
-<div className="mt-auto flex gap-4 pt-4 md:pt-0">
+
+            <div className="flex flex-wrap gap-2 mb-8">
+              {project.roles.slice(0,4).map((role) => (
+                <Badge key={role} variant="outline">{role}</Badge>
+              ))}
+            </div>
+
+            <div className="mt-auto flex gap-4 pt-4 md:pt-0">
                <motion.a 
                  href={project.caseStudyUrl || '#'}
                  target="_blank"
