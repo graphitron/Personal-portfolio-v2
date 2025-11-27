@@ -6,7 +6,7 @@ export const CORE_PROJECTS: CoreProject[] = [
     id: 'ailaysa',
     title: 'Ailaysa',
     tagline: 'Multilingual AI Content Platform',
-    description: 'Ailaysa is an AI-powered multilingual content platform used by individuals and enterprises to generate writing, translation, voice, and visuals in one seamless workflow.',
+    //description: 'Ailaysa is an AI-powered multilingual content platform used by individuals and enterprises to generate writing, translation, voice, and visuals in one seamless workflow.',
     roles: ['Product Design', 'UX/UI', 'Workflow Design', 'Interaction Design', 'Design System', 'AI Feature Collaboration'],
     badges: ['AI | ', 'SaaS | ', 'B2B | ', 'Enterprise UX'],
     metrics: [
