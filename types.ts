@@ -33,12 +33,17 @@ export interface VisualProject {
   size?: 'social' | 'a4' | 'presentation' | 'wide'; // New field for aspect ratios
 }
 
-export interface ExperimentItem {
-  id: string;
-  title: string;
-  category: string;
-  image: string;
+export interface ExperienceItem {
+  id: number;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+  type?: string;
+  location?: string;
+  logo?: string;
 }
+
 
 export interface SkillSet {
   category: string;

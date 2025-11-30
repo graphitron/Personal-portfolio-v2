@@ -3,57 +3,101 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { EXPERIENCE_ITEMS } from '../constants';
 import SectionHeader from './SectionHeader';
+import { Briefcase, Calendar, MapPin, Clock } from 'lucide-react';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="py-24 border-t border-blueprint-border bg-blueprint-bg/50 relative">
-      <SectionHeader title="Experience" number="04" subtitle="Professional Timeline" />
+    <section id="experience" className="py-24 border-t border-blueprint-border bg-blueprint-bg relative">
+      <SectionHeader title="Experience" number="04" subtitle="Professional History" />
       
-      <div className="max-w-3xl mx-auto relative pt-8 pb-8">
-        {/* Vertical Line - Fades out at bottom to imply continuation/single entry */}
-        <div className="absolute left-4 md:left-1/2 top-0 h-full w-px bg-gradient-to-b from-blueprint-border via-blueprint-border to-transparent transform -translate-x-1/2"></div>
-
-        {EXPERIENCE_ITEMS.map((item, index) => (
-          <motion.div 
-            key={item.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6 }}
-            className={`relative flex flex-col md:flex-row items-center justify-between mb-16 last:mb-0`}
-          >
-             {/* Empty side for spacing (Left side on desktop) */}
-             <div className="hidden md:block w-5/12 text-right pr-12">
-               <span className="text-xs font-mono text-blueprint-primary font-bold bg-blueprint-bg/80 px-2 py-1 border border-blueprint-border rounded">
-                 {item.period}
-               </span>
-             </div>
-
-             {/* Center Node */}
-             <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-blueprint-primary border-4 border-white rounded-full transform -translate-x-1/2 z-10 shadow-[0_0_0_1px_rgba(0,0,0,0.1)]"></div>
-
-             {/* Content Card (Right side on desktop) */}
-             <div className="w-full pl-12 md:pl-0 md:w-5/12 md:ml-auto">
-               <div className="relative bg-white border border-blueprint-border p-6 hover:border-blueprint-primary hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.05)] transition-all group ml-0 md:ml-12">
-                  {/* Connector Line for Mobile */}
-                  <div className="md:hidden absolute top-4 -left-12 w-8 h-[1px] bg-blueprint-border"></div>
+      <div className="max-w-4xl mx-auto px-6 md:px-0">
+        <div className="grid grid-cols-1 gap-8">
+          {EXPERIENCE_ITEMS.map((item, index) => (
+            <motion.div 
+              key={item.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative group"
+            >
+               {/* Card Container */}
+               <div className="bg-white border-2 border-blueprint-border hover:border-blueprint-primary transition-colors duration-300 p-0 relative overflow-hidden shadow-sm hover:shadow-md">
                   
-                  {/* Period badge for Mobile */}
-                  <div className="md:hidden mb-3">
-                     <span className="text-[10px] font-mono text-blueprint-primary font-bold bg-blueprint-bg px-2 py-1 border border-blueprint-border rounded">
-                       {item.period}
-                     </span>
+                  {/* Technical Decorative Header */}
+                  <div className="bg-blueprint-bg border-b border-blueprint-border p-3 flex justify-between items-center text-[10px] font-mono text-blueprint-muted uppercase tracking-widest">
+                     <span>[EXP_MODULE_0{index + 1}]</span>
+                     <div className="flex gap-2">
+                        <div className="w-2 h-2 rounded-full border border-blueprint-muted"></div>
+                        <div className="w-2 h-2 rounded-full bg-blueprint-primary/20"></div>
+                     </div>
                   </div>
 
-                  <h3 className="font-display font-bold text-lg text-blueprint-text group-hover:text-blueprint-primary transition-colors">{item.company}</h3>
-                  <h4 className="text-sm font-medium text-blueprint-muted mb-4 uppercase tracking-wider">{item.role}</h4>
-                  <p className="text-sm text-blueprint-text/80 leading-relaxed border-t border-blueprint-border pt-3">
-                    {item.description}
-                  </p>
+                  <div className="p-6 md:p-8 grid grid-cols-1 md:grid-cols-12 gap-6">
+                     
+                     {/* Left Column: Role & Company */}
+                     <div className="md:col-span-5 flex flex-col border-b md:border-b-0 md:border-r border-blueprint-border/50 pb-6 md:pb-0 md:pr-6">
+                        
+                        <div className="flex items-start gap-4 mb-4">
+                           {/* Company Logo */}
+                           {item.logo && (
+                             <div className="w-12 h-12 border border-blueprint-border p-2 bg-blueprint-bg flex items-center justify-center shrink-0">
+                               <img src={item.logo} alt={item.company} className="w-full h-full object-contain opacity-80" />
+                             </div>
+                           )}
+                           
+                           <div>
+                              <h3 className="font-display font-bold text-xl leading-tight text-blueprint-text group-hover:text-blueprint-primary transition-colors">
+                                 {item.role}
+                              </h3>
+                              <div className="flex items-center gap-2 text-blueprint-primary/80 font-medium text-sm mt-1">
+                                 <Briefcase className="w-3 h-3" />
+                                 <span>{item.company}</span>
+                              </div>
+                           </div>
+                        </div>
+
+                        {/* Badges Row */}
+                        <div className="flex flex-wrap gap-2 mb-4">
+                           {item.type && (
+                             <div className="inline-flex items-center gap-1.5 bg-blueprint-bg border border-blueprint-border px-2 py-1">
+                               <Clock className="w-3 h-3 text-blueprint-muted" />
+                               <span className="text-[10px] font-mono uppercase text-blueprint-text tracking-wider">{item.type}</span>
+                             </div>
+                           )}
+                           {item.location && (
+                             <div className="inline-flex items-center gap-1.5 bg-blueprint-bg border border-blueprint-border px-2 py-1">
+                               <MapPin className="w-3 h-3 text-blueprint-muted" />
+                               <span className="text-[10px] font-mono uppercase text-blueprint-text tracking-wider">{item.location}</span>
+                             </div>
+                           )}
+                        </div>
+                        
+                        <div className="inline-flex items-center gap-2 mt-auto text-blueprint-muted">
+                           <Calendar className="w-3 h-3" />
+                           <span className="text-xs font-mono font-bold">
+                              {item.period}
+                           </span>
+                        </div>
+                     </div>
+
+                     {/* Right Column: Description & Details */}
+                     <div className="md:col-span-7 flex flex-col justify-center pl-0 md:pl-2">
+                        <p className="text-blueprint-text/80 leading-relaxed text-sm md:text-base">
+                           {item.description}
+                        </p>
+                        
+                        {/* Corner Decoration */}
+                        <div className="absolute bottom-0 right-0 w-8 h-8 border-l border-t border-blueprint-border/50 bg-blueprint-bg/30"></div>
+                     </div>
+                  </div>
+                  
+                  {/* Hover Accent Line */}
+                  <div className="absolute bottom-0 left-0 h-1 bg-blueprint-primary w-0 group-hover:w-full transition-all duration-500 ease-out"></div>
                </div>
-             </div>
-          </motion.div>
-        ))}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

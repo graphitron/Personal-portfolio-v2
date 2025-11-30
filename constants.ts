@@ -1,5 +1,7 @@
 
 import { CoreProject, VisualProject } from './types';
+import type { ExperienceItem } from './types';
+
 
 export const CORE_PROJECTS: CoreProject[] = [
   {
@@ -159,12 +161,15 @@ export const LINKEDIN_POSTS = [
   { id: 12, image: 'assets/What If All  AI Tools Vanished Tomorrow.png', caption: 'What If All  AI Tools Vanished Tomorrow' },
 ];
 
-export const EXPERIENCE_ITEMS = [
+export const EXPERIENCE_ITEMS: ExperienceItem[] = [
   {
     id: 1,
-    role: 'Senior Product Designer',
-    company: 'Innovate AI',
-    period: '2023 — Present',
-    description: 'Leading the design of enterprise-grade AI tools. Increased user adoption by 40% through intuitive workflow redesigns.'
+    role: 'Product Designer (UX/UI)',
+    company: 'Ailaysa',
+    period: '2023 June — Present',
+    description: 'Leading the design of enterprise-grade AI tools. Increased user adoption by 40% through intuitive workflow redesigns.',
+    type: 'Full-time',
+    location: 'On-site',
+    logo: 'public/assets/ailaysa logo.png' // Placeholder logo for Innovate AI
   }
 ];
