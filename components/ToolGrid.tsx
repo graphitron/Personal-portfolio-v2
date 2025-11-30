@@ -19,8 +19,8 @@ const ToolGrid: React.FC = () => {
               className="group relative cursor-pointer bg-white border border-blueprint-border w-12 h-12 flex items-center justify-center rounded-lg shadow-sm hover:shadow-md hover:border-blueprint-primary transition-all"
             >
                {/* Icon */}
-               <img src={tool.icon} alt={tool.name} className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity" />
-               
+               <img src={tool.icon} alt={tool.name} className="w-full h-full object-contain p-2 opacity-70 group-hover:opacity-100 transition-opacity" />
+
                {/* Tooltip */}
                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">
                   <div className="bg-blueprint-primary text-white text-[10px] font-medium px-2 py-1 rounded shadow-lg relative">
@@ -31,9 +31,9 @@ const ToolGrid: React.FC = () => {
             </motion.div>
           ))}
        </div>
-       <p className="text-[10px] font-mono text-blueprint-muted mt-4 text-right opacity-60">
+       {/* <p className="text-[10px] font-mono text-blueprint-muted mt-4 text-right opacity-60">
           * DRAG ICONS TO REORGANIZE
-       </p>
+       </p> */}
     </div>
   );
 };
