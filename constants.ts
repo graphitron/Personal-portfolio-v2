@@ -19,8 +19,8 @@ export const CORE_PROJECTS: CoreProject[] = [
     image: 'assets/blue-gredient-1.png', 
     gallery: [
        '/assets/ailaysa-1.png', // Dashboard
-       'assets/ai_projects_main_3c8c4a17d2.svg', // Analytics
-       'assets/ailaysa-bg-1.png'  // Code/System
+       '/assets/ai_projects_main_3c8c4a17d2.svg', // Analytics
+       '/assets/ailaysa-bg-1.png'  // Code/System
     ],
     ctaText: 'Visit Product Live',
     caseStudyUrl: 'https://ailaysa.com', // REPLACE WITH YOUR LINK
@@ -38,11 +38,11 @@ export const CORE_PROJECTS: CoreProject[] = [
       { value: '0 → Launch', label: 'End-to-End Product Creation & Launch', trend: 'up' },
       { value: '5+', label: 'Whitelabel Enterprise Clients', trend: 'up' }
     ],
-    image: 'assets/cosmic-bg.png', 
+    image: '/assets/cosmic-bg.png', 
     gallery: [
-       'assets/chaireader-bg-1.png', // Dashboard
-       'assets/chaireader-bg-2.png', // Analytics
-       'assets/chaireader-bg-3.png'  // Code/System
+       '/assets/chaireader-bg-1.png', // Dashboard
+       '/assets/chaireader-bg-2.png', // Analytics
+       '/assets/chaireader-bg-3.png'  // Code/System
     ],
     ctaText: 'Visit Product Live',
     caseStudyUrl: 'https://chaireader.com', // REPLACE WITH YOUR LINK
@@ -59,10 +59,10 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     description: 'Thought leadership styling.',
     tools: ['Figma', 'Photoshop'],
     tags: ['Social', 'Branding'],
-    image: '/assets/EUBro1.avif',
+    image: 'assets/EUBro1.avif',
     gallery: [
-      '/assets/EUBro1.avif',
-      '/assets/EUBro2.avif',
+      'assets/EUBro1.avif',
+      'assets/EUBro2.avif',
     ],
     size: 'social' // 1:1
   },
@@ -72,11 +72,10 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     description: 'Tech conference A4.',
     tools: ['Illustrator', 'InDesign'],
     tags: ['Print', 'Layout'],
-    image: 'public/assets/chatwithbooks1.avif',
+    image: 'assets/chatwithbooks1.avif',
     gallery: [
-      'public/assets/chatwithbooks1.avif',
-      'public/assets/chatwithbooks2.avif',
-      'public/assets/chatwithbooks2.avif'
+      'assets/chatwithbooks1.avif',
+      'assets/chatwithbooks2.avif',
     ],
     size: 'a4' // 1:1.414
   },
@@ -170,12 +169,12 @@ export const TOOLS_LIST = [
   // { name: 'OpenAI', icon: 'https://cdn.simpleicons.org/openai/000000' },
   // { name: 'Anthropic', icon: 'https://cdn.simpleicons.org/anthropic/000000' },
   // { name: 'Webflow', icon: 'https://cdn.simpleicons.org/webflow/000000' },
-  { name: 'Figma', icon: 'public/assets/figma logo.png' },
-  { name: 'Framer', icon: 'public/assets/Framer-icon.png' },
-  { name: 'Photoshop', icon: 'public/assets/photoshop logo.png'},
-  { name: 'Illustrator', icon: 'public/assets/illustrator logo.png' },
-  { name: 'Indesign', icon: 'public/assets/indesign logo.png' },
-  { name: 'Canva', icon: 'public/assets/canva logo.jpeg' }
+  { name: 'Figma', icon: 'assets/figma logo.png' },
+  { name: 'Framer', icon: 'assets/Framer-icon.png' },
+  { name: 'Photoshop', icon: 'assets/photoshop logo.png'},
+  { name: 'Illustrator', icon: 'assets/illustrator logo.png' },
+  { name: 'Indesign', icon: 'assets/indesign logo.png' },
+  { name: 'Canva', icon: 'assets/canva logo.jpeg' }
 ];
 
 // MANUAL LINKEDIN POSTS - REPLACE URLS HERE
