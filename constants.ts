@@ -3,6 +3,7 @@ import { CoreProject, VisualProject } from './types';
 import type { ExperienceItem } from './types';
 
 
+
 export const CORE_PROJECTS: CoreProject[] = [
   {
     id: 'ailaysa',
@@ -58,7 +59,11 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     description: 'Thought leadership styling.',
     tools: ['Figma', 'Photoshop'],
     tags: ['Social', 'Branding'],
-    image: 'https://picsum.photos/id/180/1080/1080',
+    image: '/assets/EUBro1.avif',
+    gallery: [
+      '/assets/EUBro1.avif',
+      '/assets/EUBro2.avif',
+    ],
     size: 'social' // 1:1
   },
   {
@@ -67,7 +72,12 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     description: 'Tech conference A4.',
     tools: ['Illustrator', 'InDesign'],
     tags: ['Print', 'Layout'],
-    image: 'https://picsum.photos/id/445/800/1131',
+    image: 'public/assets/chatwithbooks1.avif',
+    gallery: [
+      'public/assets/chatwithbooks1.avif',
+      'public/assets/chatwithbooks2.avif',
+      'public/assets/chatwithbooks2.avif'
+    ],
     size: 'a4' // 1:1.414
   },
   {
@@ -77,6 +87,11 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     tools: ['Figma', 'Keynote'],
     tags: ['Presentation', 'Storytelling'],
     image: 'https://picsum.photos/id/435/1600/900',
+    gallery: [
+      'https://picsum.photos/id/435/1600/900',
+      'https://picsum.photos/id/436/1600/900',
+      'https://picsum.photos/id/437/1600/900'
+    ],
     size: 'presentation' // 16:9
   },
   {
@@ -86,6 +101,11 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     tools: ['Figma', 'Framer'],
     tags: ['Web UI', 'Conversion'],
     image: 'https://picsum.photos/id/119/1200/800',
+    gallery: [
+      'https://picsum.photos/id/119/1200/800',
+      'https://picsum.photos/id/120/1200/800',
+      'https://picsum.photos/id/250/1080/1920'
+    ],
     size: 'wide' // 3:2
   },
   {
@@ -95,6 +115,10 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     tools: ['Photoshop'],
     tags: ['Social', 'Mobile'],
     image: 'https://picsum.photos/id/250/1080/1920',
+    gallery: [
+      'https://picsum.photos/id/250/1080/1920',
+      'https://picsum.photos/id/251/1080/1920'
+    ],
     size: 'a4' // Using vertical ratio
   },
   {
@@ -104,6 +128,10 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     tools: ['Illustrator'],
     tags: ['System', 'Vector'],
     image: 'https://picsum.photos/id/160/1000/1000',
+    gallery: [
+      'https://picsum.photos/id/160/1000/1000',
+      'https://picsum.photos/id/162/1000/1000'
+    ],
     size: 'social'
   },
   {
@@ -113,6 +141,10 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     tools: ['Figma', 'React'],
     tags: ['Product', 'Data'],
     image: 'https://picsum.photos/id/20/1600/900',
+    gallery: [
+      'https://picsum.photos/id/20/1600/900',
+      'https://picsum.photos/id/24/1600/900'
+    ],
     size: 'presentation'
   }
 ];
