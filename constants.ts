@@ -94,59 +94,59 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     ],
     size: 'presentation' // 16:9
   },
-  {
-    id: 'landing-page-1',
-    title: 'SaaS Landing Page',
-    description: 'High-conversion hero section.',
-    tools: ['Figma', 'Framer'],
-    tags: ['Web UI', 'Conversion'],
-    image: 'https://picsum.photos/id/119/1200/800',
-    gallery: [
-      'https://picsum.photos/id/119/1200/800',
-      'https://picsum.photos/id/120/1200/800',
-      'https://picsum.photos/id/250/1080/1920'
-    ],
-    size: 'wide' // 3:2
-  },
-  {
-    id: 'social-media-2',
-    title: 'Instagram Story',
-    description: 'Campaign highlight.',
-    tools: ['Photoshop'],
-    tags: ['Social', 'Mobile'],
-    image: 'https://picsum.photos/id/250/1080/1920',
-    gallery: [
-      'https://picsum.photos/id/250/1080/1920',
-      'https://picsum.photos/id/251/1080/1920'
-    ],
-    size: 'a4' // Using vertical ratio
-  },
-  {
-    id: 'illustration',
-    title: 'Icon Set',
-    description: 'System iconography.',
-    tools: ['Illustrator'],
-    tags: ['System', 'Vector'],
-    image: 'https://picsum.photos/id/160/1000/1000',
-    gallery: [
-      'https://picsum.photos/id/160/1000/1000',
-      'https://picsum.photos/id/162/1000/1000'
-    ],
-    size: 'social'
-  },
-  {
-    id: 'dashboard',
-    title: 'Analytics Dash',
-    description: 'Dark mode data viz.',
-    tools: ['Figma', 'React'],
-    tags: ['Product', 'Data'],
-    image: 'https://picsum.photos/id/20/1600/900',
-    gallery: [
-      'https://picsum.photos/id/20/1600/900',
-      'https://picsum.photos/id/24/1600/900'
-    ],
-    size: 'presentation'
-  }
+  // {
+  //   id: 'landing-page-1',
+  //   title: 'SaaS Landing Page',
+  //   description: 'High-conversion hero section.',
+  //   tools: ['Figma', 'Framer'],
+  //   tags: ['Web UI', 'Conversion'],
+  //   image: 'https://picsum.photos/id/119/1200/800',
+  //   gallery: [
+  //     'https://picsum.photos/id/119/1200/800',
+  //     'https://picsum.photos/id/120/1200/800',
+  //     'https://picsum.photos/id/250/1080/1920'
+  //   ],
+  //   size: 'wide' // 3:2
+  // },
+  // {
+  //   id: 'social-media-2',
+  //   title: 'Instagram Story',
+  //   description: 'Campaign highlight.',
+  //   tools: ['Photoshop'],
+  //   tags: ['Social', 'Mobile'],
+  //   image: 'https://picsum.photos/id/250/1080/1920',
+  //   gallery: [
+  //     'https://picsum.photos/id/250/1080/1920',
+  //     'https://picsum.photos/id/251/1080/1920'
+  //   ],
+  //   size: 'a4' // Using vertical ratio
+  // },
+  // {
+  //   id: 'illustration',
+  //   title: 'Icon Set',
+  //   description: 'System iconography.',
+  //   tools: ['Illustrator'],
+  //   tags: ['System', 'Vector'],
+  //   image: 'https://picsum.photos/id/160/1000/1000',
+  //   gallery: [
+  //     'https://picsum.photos/id/160/1000/1000',
+  //     'https://picsum.photos/id/162/1000/1000'
+  //   ],
+  //   size: 'social'
+  // },
+  // {
+  //   id: 'dashboard',
+  //   title: 'Analytics Dash',
+  //   description: 'Dark mode data viz.',
+  //   tools: ['Figma', 'React'],
+  //   tags: ['Product', 'Data'],
+  //   image: 'https://picsum.photos/id/20/1600/900',
+  //   gallery: [
+  //     'https://picsum.photos/id/20/1600/900',
+  //     'https://picsum.photos/id/24/1600/900'
+  //   ],
+  //   size: 'presentation'
+  // }
 ];
 
 export const ABOUT_NODES = [
@@ -202,6 +202,6 @@ export const EXPERIENCE_ITEMS: ExperienceItem[] = [
     description: 'Leading the design of enterprise-grade AI tools. Increased user adoption by 40% through intuitive workflow redesigns.',
     type: 'Full-time',
     location: 'On-site',
-    logo: 'public/assets/ailaysa logo.png' // Placeholder logo for Innovate AI
+    logo: 'assets/ailaysa logo.png' // Placeholder logo for Innovate AI
   }
 ];

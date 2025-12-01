@@ -38,7 +38,7 @@ const LinkedInFeature: React.FC = () => {
         <div className="flex gap-6 animate-marquee w-max mb-6">
           {[...topRow, ...topRow].map((post, i) => (
             <div key={`top-${i}`} className="relative w-60 aspect-[4/5] bg-white border border-blueprint-border shadow-lg group overflow-hidden hover:scale-105 transition-transform duration-300">
-              <img src={post.image} alt="LinkedIn Post" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" />
+              <img src={post.image} alt="LinkedIn Post" className="w-full h-full object-cover group-hover:grayscale-0 transition-all" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                 <p className="text-[10px] font-mono text-blueprint-primary">{post.caption}</p>
               </div>
