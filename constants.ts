@@ -86,11 +86,12 @@ export const VISUAL_PROJECTS: VisualProject[] = [
     description: 'Series A Funding Deck.',
     tools: ['Figma', 'Keynote'],
     tags: ['Presentation', 'Storytelling'],
-    image: 'https://picsum.photos/id/435/1600/900',
+    image: 'assets/ppt slide 1.png',
     gallery: [
-      'https://picsum.photos/id/435/1600/900',
-      'https://picsum.photos/id/436/1600/900',
-      'https://picsum.photos/id/437/1600/900'
+      'assets/ppt slide 1.png',
+      'assets/ppt slide 2.png',
+      'assets/ppt slide 3.png',
+      'assets/ppt slide 4.png'
     ],
     size: 'presentation' // 16:9
   },
