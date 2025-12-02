@@ -77,9 +77,9 @@ const App: React.FC = () => {
             <header className="min-h-screen flex flex-col justify-center pt-20 relative">
               {/* Header Background Image */}
               <div 
-                className="absolute inset-0 z-[-1] opacity-[0.8] pointer-events-none bg-cover bg-center grayscale-[20%]"
+                className="absolute inset-0 z-[-1] opacity-[0] pointer-events-none bg-cover bg-center grayscale-[10%]"
                 style={{ 
-                  backgroundImage: "url('https://images.unsplash.com/photo-1533658486763-0024c8743956?q=80&w=2667&auto=format&fit=crop')" 
+                  backgroundImage: "url('assets/AI Human love.png')" 
                 }}
               />
 
@@ -116,7 +116,7 @@ const App: React.FC = () => {
                      View Case Studies
                    </a>
                    <a 
-                     href="public\assets\Jagadeeswaran-FlowCV-Resume-20251125.pdf" // REPLACE WITH YOUR RESUME LINK
+                     href="assets/Jagadeeswaran-Resume-20251125.pdf" // REPLACE WITH YOUR RESUME LINK
                      target="_blank"
                      rel="noopener noreferrer"
                      className="bg-white border border-blueprint-border text-blueprint-text px-6 py-3 text-sm font-medium uppercase tracking-wider hover:border-blueprint-primary transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
