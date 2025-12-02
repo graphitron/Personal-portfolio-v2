@@ -113,7 +113,7 @@ const App: React.FC = () => {
               <div 
                 className="absolute inset-0 z-[-1] pointer-events-none bg-cover bg-center grayscale-[0%]"
                 style={{ 
-                  backgroundImage: "url('public/assets/homebgimage.png')" 
+                  backgroundImage: "url('assets/homebgimage.png')" 
                 }}
               />
               {/* Overlay to ensure text readability */}
