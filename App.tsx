@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import HeroCanvas from './components/HeroCanvas';
 import SectionHeader from './components/SectionHeader';
@@ -11,8 +11,42 @@ import SnakeGame from './components/SnakeGame';
 import ExperienceSection from './components/ExperienceSection';
 import LoadingScreen from './components/LoadingScreen';
 import { CORE_PROJECTS, ABOUT_NODES } from './constants';
-import { Download, Mail, Linkedin } from 'lucide-react';
+import { Download, Mail, Linkedin, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+
+// --- Text Scramble Component for Hero ---
+const ScrambleText: React.FC<{ text: string }> = ({ text }) => {
+  const [display, setDisplay] = useState(text);
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()';
+
+  useEffect(() => {
+    let iteration = 0;
+    const interval = setInterval(() => {
+      setDisplay(
+        text
+          .split('')
+          .map((letter, index) => {
+            if (index < iteration) {
+              return text[index];
+            }
+            return chars[Math.floor(Math.random() * chars.length)];
+          })
+          .join('')
+      );
+
+      if (iteration >= text.length) {
+        clearInterval(interval);
+      }
+      iteration += 1 / 3;
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, [text]);
+
+  return <span className="font-mono">{display}</span>;
+};
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -74,70 +108,66 @@ const App: React.FC = () => {
           <main className="relative z-10 max-w-[1200px] mx-auto px-6 border-x border-transparent md:border-blueprint-border/50 bg-white/30 backdrop-blur-[2px]">
             
             {/* 1. Hero Section */}
-            <header className="min-h-screen flex flex-col justify-center pt-20 relative">
-              {/* Header Background Image */}
+            <header className="min-h-screen flex flex-col items-center justify-center relative py-20 text-center">
+              {/* Header Background Image: Rice Terraces */}
               <div 
-                className="absolute inset-0 z-[-1] opacity-[0] pointer-events-none bg-cover bg-center grayscale-[10%]"
+                className="absolute inset-0 z-[-1] pointer-events-none bg-cover bg-center grayscale-[0%]"
                 style={{ 
-                  backgroundImage: "url('assets/AI Human love.png')" 
+                  backgroundImage: "url('public/assets/homebgimage.png')" 
                 }}
               />
+              {/* Overlay to ensure text readability */}
+              <div className="absolute inset-0 z-[-1] bg-white/10 pointer-events-none radial-gradient(circle, transparent 0%, white 100%)" />
 
               <motion.div 
                 variants={staggerContainer}
                 initial="hidden"
                 animate="visible"
-                className="max-w-3xl mt-12 md:mt-0"
+                className="max-w-5xl mx-auto relative z-10 flex flex-col items-center"
               >
-                <motion.div variants={fadeInUp} className="mb-8 flex gap-4 items-center">
-                   <motion.span 
-                      initial={{ width: 0 }} 
-                      animate={{ width: '3rem' }} 
-                      transition={{ duration: 0.8, delay: 0.2 }} 
-                      className="h-[1px] bg-blueprint-primary" 
-                   />
-                   <span className="text-xs font-mono text-blueprint-primary uppercase tracking-widest font-bold">Product Designer (UX/UI)</span>
+                {/* System Status Bar */}
+                <motion.div variants={fadeInUp} className="mb-12 inline-flex items-center gap-6 bg-white border border-blueprint-border px-4 py-2 rounded-full shadow-sm">
+                   <div className="flex items-center gap-2 border-r border-blueprint-border pr-4">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      </span>
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-blueprint-primary">System Online</span>
+                   </div>
+                   <div className="text-[10px] font-mono font-medium text-blueprint-muted uppercase tracking-wider flex items-center gap-2">
+                      <CheckCircle className="w-3 h-3 text-blueprint-primary" />
+                      Open to Work
+                   </div>
                 </motion.div>
                 
-                <motion.h1 variants={fadeInUp} className="font-display text-5xl md:text-7xl font-semibold text-blueprint-text leading-[1.1] mb-8 relative">
-                  <span className="absolute -left-8 top-4 text-base text-blueprint-primary opacity-50 hidden md:block">+</span>
-                  I bring clarity, <br/>
-                  structure, and flow <br/>
-                  to <span className="text-blueprint-primary underline decoration-2 underline-offset-4 decoration-blueprint-border">multi-layered</span> <br/>
-                  digital products.
-                </motion.h1>
-                
-                <motion.p variants={fadeInUp} className="text-lg md:text-xl text-blueprint-muted max-w-xl leading-relaxed mb-12 bg-white/60 backdrop-blur-sm p-4 border-l-2 border-blueprint-primary/20 shadow-sm">
-                  Designing intuitive systems, conversational AI touchpoints, and seamless workflows for intelligent digital products.
-                </motion.p>
+                {/* Main Headline */}
+                <motion.div variants={fadeInUp} className="mb-28">
+                  <h2 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-blueprint-muted mb-4">
+                    Designing workflows that bridge
+                  </h2>
+                  
+                  <div className="flex flex-col md:block items-center leading-none">
+                     <span className="block md:inline font-serif italic text-6xl md:text-8xl text-blueprint-text mb-0 md:mb-0 md:mr-4">
+                       Humans
+                     </span>
+                     <span className="font-display font-light text-2xl md:text-4xl text-blueprint-muted align-centre mr-4">&</span>
+                     <span className="block md:inline-block bg-[rgb(0_66_37)] text-white text-2xl md:text-5xl font-mono px-4 py-2 mt-2 md:mt-0 shadow-[8px_8px_0px_0px_rgb(0,86,59)]">
+                       <ScrambleText text="INTELLIGENT SYSTEMS" />
+                     </span>
+                  </div>
+                </motion.div>
 
-                <motion.div variants={fadeInUp} className="flex flex-wrap gap-4">
-                   <a href="#work" className="bg-blueprint-primary text-white px-6 py-3 text-sm font-medium uppercase tracking-wider hover:bg-blueprint-text transition-colors shadow-[4px_4px_0px_0px_rgba(0,0,0,0.1)] hover:shadow-none hover:translate-x-[1px] hover:translate-y-[1px]">
+                <motion.div variants={fadeInUp} className="flex flex-col md:flex-row gap-4 items-center">
+                   <a href="#work" className="bg-blueprint-text text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-primary transition-all hover:scale-105 shadow-lg">
                      View Case Studies
                    </a>
-                   <a 
-                     href="assets/Jagadeeswaran-Resume-20251202.pdf" // REPLACE WITH YOUR RESUME LINK
-                     target="_blank"
-                     rel="noopener noreferrer"
-                     className="bg-white border border-blueprint-border text-blueprint-text px-6 py-3 text-sm font-medium uppercase tracking-wider hover:border-blueprint-primary transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
-                   >
+                   <button className="bg-white border-2 border-blueprint-text text-blueprint-text px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-bg transition-colors flex items-center gap-2">
                      Download Resume <Download className="w-4 h-4" />
-                   </a>
-                </motion.div>
-
-                <motion.div variants={fadeInUp} className="mt-24 flex gap-8">
-                   <div className="text-[10px] uppercase tracking-widest text-blueprint-muted border-l border-blueprint-primary pl-3 font-medium">
-                     System<br/>Thinking
-                   </div>
-                   <div className="text-[10px] uppercase tracking-widest text-blueprint-muted border-l border-blueprint-primary pl-3 font-medium">
-                     AI<br/>Interaction
-                   </div>
-                   <div className="text-[10px] uppercase tracking-widest text-blueprint-muted border-l border-blueprint-primary pl-3 font-medium">
-                     Interface<br/>Architecture
-                   </div>
+                   </button>
                 </motion.div>
               </motion.div>
             </header>
+
 
             {/* 2. Work Section */}
             <section id="work" className="py-24 border-t border-blueprint-border bg-white/40">
