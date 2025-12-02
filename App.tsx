@@ -116,7 +116,7 @@ const App: React.FC = () => {
                      View Case Studies
                    </a>
                    <a 
-                     href="assets/Jagadeeswaran-Resume-20251125.pdf" // REPLACE WITH YOUR RESUME LINK
+                     href="assets/Jagadeeswaran-Resume-20251202.pdf" // REPLACE WITH YOUR RESUME LINK
                      target="_blank"
                      rel="noopener noreferrer"
                      className="bg-white border border-blueprint-border text-blueprint-text px-6 py-3 text-sm font-medium uppercase tracking-wider hover:border-blueprint-primary transition-colors flex items-center gap-2 shadow-sm cursor-pointer"
