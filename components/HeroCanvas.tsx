@@ -1,6 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 
-const HeroCanvas: React.FC = () => {
+interface HeroCanvasProps {
+  isDarkMode?: boolean;
+}
+
+const HeroCanvas: React.FC<HeroCanvasProps> = ({ isDarkMode = false }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -29,7 +33,7 @@ const HeroCanvas: React.FC = () => {
       y: Math.floor(Math.random() * (height / gridSize)) * gridSize,
       dir: Math.random() > 0.5 ? 'x' : 'y',
       speed: (Math.random() * 1 + 0.5) * (Math.random() > 0.5 ? 1 : -1),
-      color: Math.random() > 0.7 ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)', // Black variations
+      // color: Math.random() > 0.7 ? 'rgba(0, 0, 0, 0.8)' : 'rgba(0, 0, 0, 0.5)', // Black variations
       length: Math.random() * 20 + 10
     }));
 
@@ -38,8 +42,16 @@ const HeroCanvas: React.FC = () => {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
+      
+      // Colors based on theme
+      const gridColor = isDarkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+      const packetColorBright = isDarkMode ? 'rgba(255, 255, 255, 0.8)' : 'rgba(0, 0, 0, 0.8)';
+      const packetColorDim = isDarkMode ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)';
+      const nodeFill = isDarkMode ? '#FFFFFF' : '#000000';
+      const nodeStroke = isDarkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)';
+
       // Draw Static Grid (Faint)
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.05)'; // Very faint black/gray
+      ctx.strokeStyle = gridColor;
       ctx.lineWidth = 1;
       
       // Vertical lines
@@ -60,7 +72,7 @@ const HeroCanvas: React.FC = () => {
 
       // Draw Moving Packets
       packets.forEach(p => {
-        ctx.fillStyle = p.color;
+        ctx.fillStyle = Math.random() > 0.7 ? packetColorBright : packetColorDim;
         
         if (p.dir === 'x') {
           p.x += p.speed;
@@ -96,12 +108,12 @@ const HeroCanvas: React.FC = () => {
          
          ctx.beginPath();
          ctx.arc(nx, ny, 4, 0, Math.PI*2);
-         ctx.fillStyle = '#000000';
+         ctx.fillStyle = nodeFill;
          ctx.fill();
          
          ctx.beginPath();
          ctx.arc(nx, ny, 12, 0, Math.PI*2);
-         ctx.strokeStyle = 'rgba(0, 0, 0, 0.2)';
+         ctx.strokeStyle = nodeStroke;
          ctx.stroke();
       }
 
@@ -114,9 +126,9 @@ const HeroCanvas: React.FC = () => {
       window.removeEventListener('resize', resize);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [isDarkMode]);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none -z-10 bg-blueprint-bg" />;
+  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none -z-10 bg-blueprint-bg transition-colors duration-500" />;
 };
 
 export default HeroCanvas;

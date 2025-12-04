@@ -1,9 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  isDarkMode?: boolean;
+  toggleTheme?: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -27,7 +32,7 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/90 backdrop-blur-md border-b border-blueprint-border py-4 shadow-sm' : 'bg-transparent py-6'}`}>
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-blueprint-panel/90 backdrop-blur-md border-b border-blueprint-border py-4 shadow-sm' : 'bg-transparent py-6'}`}>
         <div className="max-w-[1200px] mx-auto px-6 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -40,6 +45,8 @@ const Navbar: React.FC = () => {
             Jagadeeswaran
           </motion.div>
           
+          <div className="flex items-center gap-6">
+
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item, i) => (
@@ -59,17 +66,29 @@ const Navbar: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.3 }}
                 onClick={() => scrollToSection('contact')}
-                className="text-xs font-medium uppercase tracking-widest bg-white border border-blueprint-border px-4 py-2 hover:bg-blueprint-primary hover:text-white hover:border-blueprint-primary transition-colors"
+                  className="text-xs font-medium uppercase tracking-widest bg-blueprint-panel border border-blueprint-border px-4 py-2 text-blueprint-text hover:bg-blueprint-primary hover:text-blueprint-bg hover:border-blueprint-primary transition-colors"
               >
                 Contact
               </motion.button>
           </div>
+
+           {/* Theme Toggle */}
+            {toggleTheme && (
+              <button 
+                onClick={toggleTheme}
+                className="p-2 rounded-full border border-blueprint-border text-blueprint-text hover:border-blueprint-primary transition-colors bg-blueprint-panel"
+                title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              >
+                {isDarkMode ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            )}
 
           {/* Mobile Hamburger */}
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-blueprint-text">
               {isOpen ? <X /> : <Menu />}
             </button>
+          </div>
           </div>
         </div>
       </nav>

@@ -7,7 +7,7 @@ import { Briefcase, Calendar, MapPin, Clock } from 'lucide-react';
 
 const ExperienceSection: React.FC = () => {
   return (
-    <section id="experience" className="py-24 border-t border-blueprint-border bg-blueprint-bg relative">
+    <section id="experience" className="py-24 border-t border-blueprint-border bg-blueprint-bg relative transition-colors duration-500">
       <SectionHeader title="Experience" number="04" subtitle="Professional History" />
       
       <div className="max-w-4xl mx-auto px-6 md:px-0">
@@ -22,7 +22,7 @@ const ExperienceSection: React.FC = () => {
               className="relative group"
             >
                {/* Card Container */}
-               <div className="bg-white border-2 border-blueprint-border hover:border-blueprint-primary transition-colors duration-300 p-0 relative overflow-hidden shadow-sm hover:shadow-md">
+               <div className="bg-blueprint-panel border-2 border-blueprint-border hover:border-blueprint-primary transition-colors duration-300 p-0 relative overflow-hidden shadow-sm hover:shadow-md">
                   
                   {/* Technical Decorative Header */}
                   <div className="bg-blueprint-bg border-b border-blueprint-border p-3 flex justify-between items-center text-[10px] font-mono text-blueprint-muted uppercase tracking-widest">

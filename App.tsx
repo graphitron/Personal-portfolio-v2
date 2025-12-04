@@ -79,6 +79,24 @@ const staggerContainer = {
 
 const App: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check system preference on load
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [isDarkMode]);
+
+  const toggleTheme = () => setIsDarkMode(!isDarkMode);
 
   return (
     <>
@@ -87,9 +105,9 @@ const App: React.FC = () => {
       </AnimatePresence>
 
       {!isLoading && (
-        <div className="min-h-screen text-blueprint-text font-sans selection:bg-blueprint-primary selection:text-white relative overflow-x-hidden bg-blueprint-bg bg-fixed bg-[size:20px_20px]">
-          <Navbar />
-          <HeroCanvas />
+        <div className="min-h-screen text-blueprint-text font-sans selection:bg-blueprint-primary selection:text-blueprint-bg relative overflow-x-hidden bg-blueprint-bg bg-fixed bg-[size:20px_20px] transition-colors duration-500">
+          <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+          <HeroCanvas isDarkMode={isDarkMode} />
           
           {/* Decorative Fixed Line */}
           <motion.div 
@@ -105,7 +123,7 @@ const App: React.FC = () => {
             className="fixed right-6 md:right-12 top-0 bottom-0 w-[1px] bg-blueprint-border z-0 hidden md:block" 
           />
 
-          <main className="relative z-10 max-w-[1200px] mx-auto px-6 border-x border-transparent md:border-blueprint-border/50 bg-white/30 backdrop-blur-[2px]">
+          <main className="relative z-10 max-w-[1200px] mx-auto px-6 border-x border-transparent md:border-blueprint-border/50 bg-blueprint-panel/30 backdrop-blur-[2px]">
             
             {/* 1. Hero Section */}
             <header className="min-h-screen flex flex-col items-center justify-center relative py-20 text-center">
@@ -116,8 +134,8 @@ const App: React.FC = () => {
                   backgroundImage: "url('assets/homebgimage.png')" 
                 }}
               />
-              {/* Overlay to ensure text readability */}
-              <div className="absolute inset-0 z-[-1] bg-white/10 pointer-events-none radial-gradient(circle, transparent 0%, white 100%)" />
+             {/* Overlay to ensure text readability - adapts to dark mode */}
+              <div className="absolute inset-0 z-[-1] bg-white/10 dark:bg-black/0 pointer-events-none radial-gradient(circle, transparent 0%, var(--bg-color) 100%)" />
 
               <motion.div 
                 variants={staggerContainer}
@@ -126,7 +144,7 @@ const App: React.FC = () => {
                 className="max-w-5xl mx-auto relative z-10 flex flex-col items-center"
               >
                 {/* System Status Bar */}
-                <motion.div variants={fadeInUp} className="mb-12 inline-flex items-center gap-6 bg-white border border-blueprint-border px-4 py-2 rounded-full shadow-sm">
+                <motion.div variants={fadeInUp} className="mb-12 inline-flex items-center gap-6 bg-blueprint-panel border border-blueprint-border px-4 py-2 rounded-full shadow-sm">
                    <div className="flex items-center gap-2 border-r border-blueprint-border pr-4">
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -142,16 +160,16 @@ const App: React.FC = () => {
                 
                 {/* Main Headline */}
                 <motion.div variants={fadeInUp} className="mb-28">
-                  <h2 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-blueprint-muted mb-4">
+                  <h2 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-blueprint-muted mb-4 drop-shadow-sm">
                     Designing workflows that bridge
                   </h2>
                   
                   <div className="flex flex-col md:block items-center leading-none">
-                     <span className="block md:inline font-serif italic text-6xl md:text-8xl text-blueprint-text mb-0 md:mb-0 md:mr-4">
+                     <span className="block md:inline font-serif italic text-6xl md:text-8xl text-blueprint-text mb-4 md:mb-0 md:mr-4 drop-shadow-md">
                        Humans
                      </span>
                      <span className="font-display font-light text-2xl md:text-4xl text-blueprint-muted align-centre mr-4">&</span>
-                     <span className="block md:inline-block bg-[rgb(0_66_37)] text-white text-2xl md:text-5xl font-mono px-4 py-2 mt-2 md:mt-0 shadow-[8px_8px_0px_0px_rgb(0,86,59)]">
+                     <span className="block md:inline-block bg-blueprint-primary text-blueprint-bg text-3xl md:text-5xl font-mono px-4 py-2 mt-2 md:mt-0 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]">
                        <ScrambleText text="INTELLIGENT SYSTEMS" />
                      </span>
                   </div>
@@ -159,10 +177,7 @@ const App: React.FC = () => {
 
                 <motion.div variants={fadeInUp} className="flex flex-col md:flex-row gap-4 items-center">
 
-                <a 
-                  href="#work" 
-                  className="bg-blueprint-text text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-primary transition-all hover:scale-105 shadow-lg"
-                >
+                <a href="#work" className="bg-blueprint-text text-blueprint-bg px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-primary transition-all hover:scale-105 shadow-lg">
                   View Case Studies
                 </a>
 
@@ -179,7 +194,7 @@ const App: React.FC = () => {
                       link.click();
                       document.body.removeChild(link);
                     }}
-                    className="bg-white border-2 border-blueprint-text text-blueprint-text px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-bg transition-colors flex items-center gap-2"
+                    className="bg-blueprint-panel border-2 border-blueprint-text text-blueprint-text px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-bg transition-colors flex items-center gap-2"
                   >
                     Download Resume
                     <Download className="w-4 h-4" />
@@ -193,7 +208,7 @@ const App: React.FC = () => {
 
 
             {/* 2. Work Section */}
-            <section id="work" className="py-24 border-t border-blueprint-border bg-white/40">
+            <section id="work" className="py-24 border-t border-blueprint-border bg-blueprint-bg/40">
                <SectionHeader title="Case Studies" number="01" subtitle="AI SaaS & Conversational Systems" />
                
                <motion.div 
@@ -210,7 +225,7 @@ const App: React.FC = () => {
             </section>
 
             {/* 3. About Section (Moved Next to Work) */}
-            <section id="about" className="py-32 border-t border-blueprint-border bg-white relative">
+            <section id="about" className="py-32 border-t border-blueprint-border bg-blueprint-panel relative transition-colors duration-500">
                {/* <div className="absolute top-8 left-6 text-xs font-mono text-blueprint-primary font-bold">02. ABOUT</div> */}
                
                <div className="max-w-4xl mx-auto">
@@ -240,7 +255,7 @@ const App: React.FC = () => {
                           {ABOUT_NODES.map((node, i) => (
                             <motion.span 
                               key={i}
-                              whileHover={{ scale: 1.05, backgroundColor: '#000', color: '#FFF' }} 
+                              whileHover={{ scale: 1.05, backgroundColor: isDarkMode ? '#FFF' : '#000', color: isDarkMode ? '#000' : '#FFF' }} 
                               className="px-3 py-2 bg-blueprint-bg border border-blueprint-border text-sm font-medium text-blueprint-text transition-all cursor-default"
                             >
                               {node}
@@ -260,7 +275,7 @@ const App: React.FC = () => {
             <ExperienceSection />
 
             {/* 5. Visual Marquee Section */}
-            <section id="visuals" className="py-24 border-t border-blueprint-border overflow-hidden bg-blueprint-bg">
+            <section id="visuals" className="py-24 border-t border-blueprint-border overflow-hidden bg-blueprint-bg transition-colors duration-500">
               <SectionHeader title="Visual Modules" number="04" subtitle="Fragments of UI, Brand, and Print" />
               <motion.div
                 initial={{ opacity: 0, x: 50 }}
@@ -298,7 +313,7 @@ const App: React.FC = () => {
                         <motion.a 
                           whileHover={{ y: -2 }}
                           href="jagadeesh.connects@gmail.com" 
-                          className="flex items-center gap-2 bg-blueprint-primary text-white px-8 py-4 font-bold uppercase tracking-wider hover:bg-black/80 transition-colors shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)]"
+                          className="flex items-center gap-2 bg-blueprint-primary text-blueprint-bg px-8 py-4 font-bold uppercase tracking-wider hover:opacity-90 transition-opacity shadow-[6px_6px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,0.1)]"
                         >
                            <Mail className="w-4 h-4" /> Email Me
                         </motion.a>
@@ -307,7 +322,7 @@ const App: React.FC = () => {
                           href="https://www.linkedin.com/in/jagadeeswaran-a-r-91b9b326b" // REPLACE WITH YOUR LINKEDIN
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 border-2 border-blueprint-border bg-white text-blueprint-text px-8 py-4 font-bold uppercase tracking-wider hover:border-blueprint-primary transition-colors"
+                          className="flex items-center gap-2 border-2 border-blueprint-border bg-blueprint-panel text-blueprint-text px-8 py-4 font-bold uppercase tracking-wider hover:border-blueprint-primary transition-colors"
                         >
                            <Linkedin className="w-4 h-4" /> LinkedIn
                         </motion.a>

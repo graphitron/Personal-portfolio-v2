@@ -60,7 +60,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
   return (
     <motion.div 
       variants={itemVariants}
-      className="group mb-24 last:mb-0 relative bg-white border border-blueprint-border p-1 hover:border-blueprint-primary/50 transition-colors duration-500"
+      className="group mb-24 last:mb-0 relative bg-blueprint-panel border border-blueprint-border p-1 hover:border-blueprint-primary/50 transition-colors duration-500"
     >
       {/* Technical Markers */}
       <div className="absolute top-[-1px] left-[-1px] w-2 h-2 border-t border-l border-blueprint-primary"></div>
@@ -84,8 +84,8 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 {project.tagline}
               </p>
             </div>
-
-            {/* <p className="text-blueprint-text/80 leading-relaxed mb-2">
+{/* 
+            <p className="text-blueprint-text/80 leading-relaxed mb-8">
               {project.description}
             </p> */}
 
@@ -93,7 +93,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
             {project.metrics && (
               <div className="grid grid-cols-2 gap-4 mb-8">
                 {project.metrics.map((metric, i) => (
-                  <div key={i} className="border border-blueprint-border bg-white p-3 relative overflow-hidden group/metric hover:border-blueprint-primary/30 transition-colors">
+                  <div key={i} className="border border-blueprint-border bg-blueprint-panel p-3 relative overflow-hidden group/metric hover:border-blueprint-primary/30 transition-colors">
                     <div className="absolute top-0 right-0 w-3 h-3 bg-blueprint-bg border-l border-b border-blueprint-border"></div>
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-2xl font-display font-bold text-blueprint-primary">{metric.value}</span>
@@ -118,7 +118,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                  target="_blank"
                  rel="noopener noreferrer"
                  whileHover={{ x: 5 }}
-                 className="flex items-center text-sm font-medium bg-blueprint-text text-white px-5 py-2 hover:bg-blueprint-primary transition-colors cursor-pointer"
+                 className="flex items-center text-sm font-medium bg-blueprint-text text-blueprint-bg px-5 py-2 hover:bg-blueprint-primary transition-colors cursor-pointer"
                >
                  {project.ctaText} <ArrowRight className="w-4 h-4 ml-2" />
                </motion.a>
@@ -138,10 +138,10 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
 
           {/* Image Column (Static Background + Auto-Scrolling Overlay) */}
           <div className="md:col-span-7 order-1 md:order-2">
-             <div className="w-full aspect-[16/10] border border-blueprint-border p-2 bg-white relative overflow-hidden">
+             <div className="w-full aspect-[16/10] border border-blueprint-border p-2 bg-blueprint-panel relative overflow-hidden">
                 
                 {/* Static Background Layer */}
-                  <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 z-0 ">
   
                 {/* Background image */}
                   <img 
@@ -154,8 +154,8 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                   <div className="absolute inset-0 bg-blueprint-grid opacity-20 mix-blend-multiply pointer-events-none" />
 
                   {/* Soft vignette */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-white/10 via-transparent to-white/10" />
-                </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-blueprint-panel/10 via-transparent to-white/10" />
+                </div>                
 
 
                 {/* 2. Scrolling Gallery Overlay */}
@@ -173,7 +173,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                       {scrollItems.map((img, i) => (
                         <div 
                           key={`${project.id}-scroll-${i}`} 
-                          className="relative w-[350px] md:w-[500px] aspect-video flex-shrink-0 border-0 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
+                          className="relative w-[350px] md:w-[500px] aspect-video flex-shrink-0 bg-blueprint-panel border-0 border-white shadow-[0px_4px_12px_rgba(0,0,0,0.08)] overflow-hidden group/item transition-transform duration-300 hover:scale-[1.02]"
                         >
                            <img 
                              src={img} 
@@ -192,7 +192,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
 
                 {/* <div className="absolute bottom-3 left-3 z-30 flex items-center gap-2 pointer-events-none">
                    <div className={`w-1.5 h-1.5 rounded-full ${isAutoScroll ? 'bg-green-500 animate-pulse' : 'bg-blueprint-muted'}`}></div>
-                   <span className="text-[9px] font-mono text-blueprint-primary tracking-widest bg-white/80 px-2 py-0.5 rounded backdrop-blur-sm border border-blueprint-border">
+                   <span className="text-[9px] font-mono text-blueprint-primary tracking-widest bg-blueprint-panel/80 px-2 py-0.5 rounded backdrop-blur-sm border border-blueprint-border">
                      {isAutoScroll ? 'Live Gallery Feed' : 'Manual Control'}
                    </span>
                 </div> */}
@@ -210,7 +210,7 @@ const CoreProjectCard: React.FC<CoreProjectCardProps> = ({ project, index }) => 
                 >
                   <span className={isAutoScroll ? "" : "opacity-50"}>Auto-Scroll</span>
                   <div className={`w-6 h-3 rounded-full border transition-colors relative ${isAutoScroll ? 'bg-blueprint-primary border-blueprint-primary' : 'bg-transparent border-blueprint-border'}`}>
-                      <div className={`absolute top-[1px] w-2 h-2 rounded-full bg-white shadow-sm transition-all duration-300 ${isAutoScroll ? 'left-[13px]' : 'left-[1px] bg-blueprint-muted'}`}></div>
+                      <div className={`absolute top-[1px] w-2 h-2 rounded-full bg-blueprint-panel shadow-sm transition-all duration-300 ${isAutoScroll ? 'left-[13px]' : 'left-[1px] bg-blueprint-muted'}`}></div>
                   </div>
                 </button>
              </div>

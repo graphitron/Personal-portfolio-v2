@@ -1,18 +1,27 @@
 
+
+
+
+
 import React, { useRef } from 'react';
 import { VISUAL_PROJECTS } from '../constants';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+
+
+
+
+
+
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const VisualMarquee: React.FC = () => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  // Duplicate items for seamless loop feel inside manual scroll
+  const items = [...VISUAL_PROJECTS, ...VISUAL_PROJECTS];
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 320; // Approx card width + gap
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -scrollAmount : scrollAmount,
-        behavior: 'smooth'
-      });
+    if (scrollRef.current) {
+      const scrollAmount = 350;
+      scrollRef.current.scrollBy({ left: direction === 'left' ? -scrollAmount : scrollAmount, behavior: 'smooth' });
     }
   };
 
@@ -27,69 +36,57 @@ const VisualMarquee: React.FC = () => {
   };
 
   return (
-    <div className="w-full py-12 bg-blueprint-bg/30 border-y border-blueprint-border/50 relative group/container">
+    <div className="w-full relative group/container py-12 bg-blueprint-bg/30 border-y border-blueprint-border">
       
-      {/* Navigation Buttons (Hidden on Mobile) */}
-      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 left-4 z-20">
-        <button 
-          onClick={() => scroll('left')}
-          className="bg-white border border-blueprint-border p-3 rounded-full shadow-lg hover:bg-blueprint-primary hover:text-white transition-all disabled:opacity-50"
-        >
-          <ArrowLeft className="w-5 h-5" />
+      {/* Navigation Controls */}
+      <div className="max-w-[1200px] mx-auto px-6 flex justify-end gap-2 mb-4">
+        <button onClick={() => scroll('left')} className="p-2 border border-blueprint-border bg-blueprint-panel hover:bg-blueprint-primary hover:text-blueprint-bg transition-colors rounded-full">
+           <ChevronLeft className="w-4 h-4" />
         </button>
-      </div>
-      <div className="hidden md:block absolute top-1/2 -translate-y-1/2 right-4 z-20">
-        <button 
-          onClick={() => scroll('right')}
-          className="bg-white border border-blueprint-border p-3 rounded-full shadow-lg hover:bg-blueprint-primary hover:text-white transition-all"
-        >
-          <ArrowRight className="w-5 h-5" />
+        <button onClick={() => scroll('right')} className="p-2 border border-blueprint-border bg-blueprint-panel hover:bg-blueprint-primary hover:text-blueprint-bg transition-colors rounded-full">
+           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
 
-      {/* Manual Outer Scroll Container */}
       <div 
-        ref={scrollContainerRef}
-        className="flex gap-8 overflow-x-auto px-6 md:px-12 pb-8 no-scrollbar scroll-smooth snap-x snap-mandatory"
+        ref={scrollRef}
+        className="w-full overflow-x-auto no-scrollbar px-6 md:px-12 flex gap-8 pb-8 snap-x"
       >
-        {VISUAL_PROJECTS.map((item, index) => {
-          // Prepare images for infinite inner loop (Duplicate 4x for smoothness)
-          const baseImages = item.gallery && item.gallery.length > 0 ? item.gallery : [item.image];
-          const marqueeImages = [...baseImages, ...baseImages, ...baseImages, ...baseImages];
-
+        {items.map((item, index) => {
+          // Use gallery images if available, otherwise fallback to main image
+          const images = item.gallery && item.gallery.length > 0 ? item.gallery : [item.image];
+          // Duplicate internal images for infinite loop effect
+          const galleryImages = [...images, ...images];
+          
           return (
             <div 
               key={`${item.id}-${index}`}
-              className={`relative flex-shrink-0 snap-center bg-white border border-blueprint-border p-3 hover:shadow-xl hover:border-blueprint-primary/50 transition-all duration-300 group/card ${getSizeClasses(item.size)}`}
+              className={`relative flex-shrink-0 bg-blueprint-panel border border-blueprint-border p-3 hover:shadow-xl transition-shadow duration-300 group/card snap-start ${getSizeClasses(item.size)}`}
             >
               {/* Card Technical Header */}
               <div className="flex justify-between items-center mb-2 border-b border-blueprint-border/50 pb-1">
-                <span className="text-[9px] font-mono text-blueprint-muted uppercase tracking-widest">MOD.{index + 1}</span>
+                <span className="text-[9px] font-mono text-blueprint-muted uppercase tracking-widest">MOD.{index % VISUAL_PROJECTS.length + 1}</span>
                 <div className="flex gap-1">
                   <div className="w-1 h-1 bg-blueprint-muted rounded-full"></div>
                   <div className="w-1 h-1 bg-blueprint-muted rounded-full"></div>
                 </div>
               </div>
 
-              {/* Inner Auto-Scrolling Image Area */}
+              {/* Scrollable Image Area (Auto-Marquee) */}
               <div className="relative w-full h-[calc(100%-40px)] bg-blueprint-bg overflow-hidden group/image-container">
-                {/* The Marquee Track */}
                 <div className="flex h-full w-max animate-marquee hover:[animation-play-state:paused]">
-                  {marqueeImages.map((img, i) => (
-                    <div key={i} className="h-full aspect-[inherit] flex-shrink-0 relative">
-                       <img 
-                        src={img} 
-                        alt={`${item.title} - ${i}`}
-                        className="w-full h-full object-cover opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-500"
-                      />
-                      {/* Divider line between scrolling images */}
-                      <div className="absolute right-0 top-0 bottom-0 w-[1px] bg-white/20"></div>
-                    </div>
+                  {galleryImages.map((img, i) => (
+                    <img 
+                      key={i}
+                      src={img} 
+                      alt={`${item.title} - ${i+1}`}
+                      className="h-full min-w-full object-cover grayscale opacity-90 group-hover/card:grayscale-0 group-hover/card:opacity-100 transition-all duration-500"
+                    />
                   ))}
                 </div>
 
-                {/* Info Overlay (Visible by default on mobile, Hover on Desktop) */}
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-t border-blueprint-border p-3 transform translate-y-0 md:translate-y-full md:group-hover/card:translate-y-0 transition-transform duration-300 flex flex-col justify-center text-left z-10">
+                {/* Info Overlay - Slides up from bottom */}
+                <div className="absolute bottom-0 left-0 right-0 bg-blueprint-panel/95 backdrop-blur-sm border-t border-blueprint-border p-3 transform translate-y-full group-hover/card:translate-y-0 transition-transform duration-300 flex flex-col justify-center text-left">
                   <h4 className="text-blueprint-text font-display font-bold text-sm mb-0.5">{item.title}</h4>
                   <p className="text-blueprint-muted text-[10px] mb-2 truncate">{item.description}</p>
                   <div className="flex gap-1 flex-wrap">
@@ -98,20 +95,23 @@ const VisualMarquee: React.FC = () => {
                      ))}
                   </div>
                 </div>
+                
+                {/* Scroll hint if multiple images */}
+                {images.length > 1 && (
+                  <div className="absolute right-2 top-2 bg-black/50 text-white text-[9px] px-1.5 py-0.5 rounded opacity-0 group-hover/card:opacity-100 transition-opacity pointer-events-none">
+                    {images.length} Pages
+                  </div>
+                )}
               </div>
 
             </div>
           );
         })}
       </div>
-
-      <div className="text-center mt-4 flex justify-center items-center gap-2">
-         <span className="text-[10px] font-mono text-blueprint-muted uppercase tracking-widest">
-            Drag to navigate // Hover card to pause
-         </span>
-      </div>
     </div>
   );
 };
+
+
 
 export default VisualMarquee;

@@ -8,8 +8,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --bg-color: #FFFDF5;
+        --panel-color: #FFFFFF;
+        --border-color: #E5E5E5;
+        --grid-color: #EFECE2;
+        --primary-color: #000000;
+        --text-color: #1A1A1A;
+        --muted-color: #666666;
+        --accent-color: #333333;
+      }
+
+      .dark {
+        --bg-color: #050505;
+        --panel-color: #111111;
+        --border-color: #333333;
+        --grid-color: #1A1A1A;
+        --primary-color: #FFFFFF;
+        --text-color: #EDEDED;
+        --muted-color: #A0A0A0;
+        --accent-color: #CCCCCC;
+      }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      html { scroll-behavior: smooth; }
+      body { background-color: var(--bg-color); color: var(--text-color); transition: background-color 0.3s, color 0.3s; }
+      ::selection { background: var(--primary-color); color: var(--bg-color); }
+      
+      .paused {
+        animation-play-state: paused !important;
+      }
+    </style>
+
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
@@ -19,14 +55,14 @@
             },
             colors: {
               blueprint: {
-                bg: '#FFFDF5', // Warm Cream / Paper
-                panel: '#FFFFFF',
-                border: '#E5E5E5', // Light gray for subtle borders
-                grid: '#EFECE2', // Slightly darker cream for grid
-                primary: '#000000', // Pure Black
-                accent: '#333333', // Dark Gray
-                text: '#1A1A1A', // Soft Black
-                muted: '#666666', // Medium Gray
+               bg: 'var(--bg-color)', 
+                panel: 'var(--panel-color)',
+                border: 'var(--border-color)',
+                grid: 'var(--grid-color)',
+                primary: 'var(--primary-color)',
+                accent: 'var(--accent-color)',
+                text: 'var(--text-color)',
+                muted: 'var(--muted-color)',
               }
             },
             animation: {
@@ -50,24 +86,13 @@
               }
             },
             backgroundImage: {
-              'grid-pattern': "linear-gradient(to right, #EFECE2 1px, transparent 1px), linear-gradient(to bottom, #EFECE2 1px, transparent 1px)",
+              'grid-pattern': "linear-gradient(to right, var(--grid-color) 1px, transparent 1px), linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px)",
             }
           },
         },
       }
     </script>
-    <style>
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      html { scroll-behavior: smooth; }
-      body { background-color: #FFFDF5; color: #1A1A1A; }
-      ::selection { background: #000000; color: #FFFFFF; }
-      
-      .paused {
-        animation-play-state: paused !important;
-      }
-    </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
