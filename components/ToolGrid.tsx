@@ -19,7 +19,7 @@ const ToolGrid: React.FC = () => {
               className="group relative cursor-pointer bg-blueprint-panel border border-blueprint-border w-12 h-12 flex items-center justify-center rounded-lg shadow-sm hover:shadow-md hover:border-blueprint-primary transition-all"
             >
                {/* Icon */}
-               <img src={tool.icon} alt={tool.name} className="w-6 h-6 opacity-70 group-hover:opacity-100 transition-opacity dark:invert" />
+               <img src={tool.icon} alt={tool.name} className="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity dark:" />
 
                {/* Tooltip */}
                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-20">

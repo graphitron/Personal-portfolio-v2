@@ -225,8 +225,8 @@ const App: React.FC = () => {
             </section>
 
             {/* 3. About Section (Moved Next to Work) */}
-            <section id="about" className="py-32 border-t border-blueprint-border bg-blueprint-panel relative transition-colors duration-500">
-               {/* <div className="absolute top-8 left-6 text-xs font-mono text-blueprint-primary font-bold">02. ABOUT</div> */}
+            <section id="about" className="flex py-32 border-t border-blueprint-border bg-blueprint-panel relative transition-colors duration-500">
+               {/* {<div className="absolute top-8 left-6 text-xs font-mono text-blueprint-primary font-bold">02. ABOUT</div>} */}
                
                <div className="max-w-4xl mx-auto">
                  <motion.div 
