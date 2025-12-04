@@ -129,7 +129,7 @@ const App: React.FC = () => {
             <header className="min-h-screen flex flex-col items-center justify-center relative py-20 text-center">
               {/* Header Background Image: Rice Terraces */}
               <div 
-                className="absolute inset-0 z-[-1] pointer-events-none bg-cover bg-center grayscale-[0%]"
+                className="absolute inset-0 z-[-1] pointer-events-none bg-cover bg-center grayscale-[10%] opacity-80"
                 style={{ 
                   backgroundImage: "url('assets/homebgimage.png')" 
                 }}
@@ -160,7 +160,7 @@ const App: React.FC = () => {
                 
                 {/* Main Headline */}
                 <motion.div variants={fadeInUp} className="mb-28">
-                  <h2 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-blueprint-muted mb-4 drop-shadow-sm">
+                  <h2 className="text-sm md:text-base font-bold uppercase tracking-[0.2em] text-blueprint-muted dark:text-black mb-4 drop-shadow-sm">
                     Designing workflows that bridge
                   </h2>
                   
@@ -168,7 +168,7 @@ const App: React.FC = () => {
                      <span className="block md:inline font-serif italic text-6xl md:text-8xl text-blueprint-text mb-4 md:mb-0 md:mr-4 drop-shadow-md">
                        Humans
                      </span>
-                     <span className="font-display font-light text-2xl md:text-4xl text-blueprint-muted align-centre mr-4">&</span>
+                     <span className="font-display font-light text-2xl md:text-4xl text-blueprint-text align-centre mr-4">&</span>
                      <span className="block md:inline-block bg-blueprint-primary text-blueprint-bg text-3xl md:text-5xl font-mono px-4 py-2 mt-2 md:mt-0 shadow-[8px_8px_0px_0px_rgba(0,0,0,0.1)] dark:shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]">
                        <ScrambleText text="INTELLIGENT SYSTEMS" />
                      </span>
