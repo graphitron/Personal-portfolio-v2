@@ -158,13 +158,36 @@ const App: React.FC = () => {
                 </motion.div>
 
                 <motion.div variants={fadeInUp} className="flex flex-col md:flex-row gap-4 items-center">
-                   <a href="#work" className="bg-blueprint-text text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-primary transition-all hover:scale-105 shadow-lg">
-                     View Case Studies
-                   </a>
-                   <button className="bg-white border-2 border-blueprint-text text-blueprint-text px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-bg transition-colors flex items-center gap-2">
-                     Download Resume <Download className="w-4 h-4" />
-                   </button>
+
+                <a 
+                  href="#work" 
+                  className="bg-blueprint-text text-white px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-primary transition-all hover:scale-105 shadow-lg"
+                >
+                  View Case Studies
+                </a>
+
+                <a
+                    href="assets/Jagadeeswaran-Resume-20251202.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => {
+                      // Trigger download in background
+                      const link = document.createElement('a');
+                      link.href = "assets/Jagadeeswaran-Resume-20251202.pdf";
+                      link.download = "Jagadeeswaran-Resume.pdf";
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
+                    className="bg-white border-2 border-blueprint-text text-blueprint-text px-10 py-4 text-sm font-bold uppercase tracking-wider hover:bg-blueprint-bg transition-colors flex items-center gap-2"
+                  >
+                    Download Resume
+                    <Download className="w-4 h-4" />
+                  </a>
+
+
                 </motion.div>
+
               </motion.div>
             </header>
 

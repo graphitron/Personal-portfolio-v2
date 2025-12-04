@@ -183,7 +183,7 @@ export const LINKEDIN_POSTS = [
   { id: 2, image: 'assets/6 Things That Confuse Users More Than You Think.png', caption: '6 Things That Confuse Users More Than You Think' },
   { id: 3, image: 'assets/20 Habits That Show You are Leveling Up as a Designer.png', caption: '20 Habits That Show  Youre Leveling Up as a Designer' },
   { id: 4, image: 'assets/Design Principles That Dont Always Work.png', caption: 'Design Principles That Don’t Always Work' },
-  { id: 5, image: 'public/assets/Escapehatches.png', caption: 'Escape Hatches' },
+  { id: 5, image: 'assets/Escapehatches.png', caption: 'Escape Hatches' },
   { id: 6, image: 'assets/experience universe.png', caption: 'Experience Universe' },
   { id: 7, image: 'assets/How to Design a Life That Feels Like Yours.png', caption: 'How to Design a Life That Feels Like Yours' },
   { id: 8, image: 'assets/open ai first rebrand.png', caption: 'Open AI First Rebrand' },
