@@ -15,6 +15,7 @@ import { Download, Mail, Linkedin, CheckCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 
+
 // --- Text Scramble Component for Hero ---
 const ScrambleText: React.FC<{ text: string }> = ({ text }) => {
   const [display, setDisplay] = useState(text);
