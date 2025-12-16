@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import Navbar from './components/Navbar';
 import HeroCanvas from './components/HeroCanvas';
 import SectionHeader from './components/SectionHeader';
@@ -363,6 +364,7 @@ const App: React.FC = () => {
             </footer>
 
           </main>
+          <Analytics />
         </div>
       )}
     </>
