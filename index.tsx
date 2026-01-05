@@ -1,6 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+
+// Initialize Vercel Web Analytics on client side
+inject();
+injectSpeedInsights()
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
